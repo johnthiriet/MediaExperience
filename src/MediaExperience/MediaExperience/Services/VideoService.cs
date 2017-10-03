@@ -7,20 +7,14 @@ namespace MediaExperience.Services
     {
         private static readonly string[] VideosUrl =
         {
-            "https://msexp2017.blob.core.windows.net/videos/XamarinUniversity/Module%20%231%20-%20Welcome%20to%20Xamarin%20Platform-u1iYeFm254g.mp4",
-            "https://msexp2017.blob.core.windows.net/videos/XamarinUniversity/Module%20%232%20-%20Introduction%20to%20Xamarin.Forms-aCbjk0O0mO0.mp4",
-            "https://msexp2017.blob.core.windows.net/videos/XamarinUniversity/Module%20%233%20-%20Designing%20Xamarin.Forms%20UI-TlQd874vupM.mp4",
-            "https://msexp2017.blob.core.windows.net/videos/XamarinUniversity/Module%20%234%20-%20Adding%20Azure%20Web%20Services-T3OxSKezX_I.mp4",
-            "https://msexp2017.blob.core.windows.net/videos/XamarinUniversity/Module%205%20-%20UI%20Testing%20with%20Xamarin-gqEvlB-Karg.mp4"
+            "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4",
+            "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
         };
 
         public static readonly string[] VideosTitle =
         {
-            "Welcome to Xamarin Platform",
-            "Introduction to Xamarin.Forms",
-            "Designing Xamarin.Forms",
-            "Adding Azure Web Services",
-            "UI Testing with Xamarin"
+            "Big Buck Bunny",
+            "Big Buck Bunny"
         };
 
         public Task<Video[]> GetVideosAsync()
