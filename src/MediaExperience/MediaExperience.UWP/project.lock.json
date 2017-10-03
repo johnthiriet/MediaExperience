@@ -25979,12 +25979,12 @@
   },
   "project": {
     "restore": {
-      "projectUniqueName": "C:\\Projects\\MediaExperience\\MediaExperience\\MediaExperience.UWP\\MediaExperience.UWP.csproj",
+      "projectUniqueName": "C:\\Projects\\MediaExperience\\src\\MediaExperience\\MediaExperience.UWP\\MediaExperience.UWP.csproj",
       "projectName": "MediaExperience.UWP",
-      "projectPath": "C:\\Projects\\MediaExperience\\MediaExperience\\MediaExperience.UWP\\MediaExperience.UWP.csproj",
-      "projectJsonPath": "C:\\Projects\\MediaExperience\\MediaExperience\\MediaExperience.UWP\\project.json",
+      "projectPath": "C:\\Projects\\MediaExperience\\src\\MediaExperience\\MediaExperience.UWP\\MediaExperience.UWP.csproj",
+      "projectJsonPath": "C:\\Projects\\MediaExperience\\src\\MediaExperience\\MediaExperience.UWP\\project.json",
       "packagesPath": "C:\\Users\\John\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\MediaExperience\\MediaExperience\\MediaExperience.UWP\\obj\\",
+      "outputPath": "C:\\Projects\\MediaExperience\\src\\MediaExperience\\MediaExperience.UWP\\obj\\",
       "projectStyle": "ProjectJson",
       "configFilePaths": [
         "C:\\Users\\John\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -25997,14 +25997,14 @@
       "frameworks": {
         "uap10.0.15063": {
           "projectReferences": {
-            "C:\\Projects\\MediaExperience\\MediaExperience\\MediaExperience\\MediaExperience.csproj": {
-              "projectPath": "C:\\Projects\\MediaExperience\\MediaExperience\\MediaExperience\\MediaExperience.csproj"
+            "C:\\Projects\\MediaExperience\\src\\MediaExperience\\MediaExperience\\MediaExperience.csproj": {
+              "projectPath": "C:\\Projects\\MediaExperience\\src\\MediaExperience\\MediaExperience\\MediaExperience.csproj"
             },
-            "C:\\Projects\\MediaExperience\\Plugin.Rome.UWP\\Plugin.Rome.UWP.csproj": {
-              "projectPath": "C:\\Projects\\MediaExperience\\Plugin.Rome.UWP\\Plugin.Rome.UWP.csproj"
+            "C:\\Projects\\MediaExperience\\src\\Plugin.Rome.UWP\\Plugin.Rome.UWP.csproj": {
+              "projectPath": "C:\\Projects\\MediaExperience\\src\\Plugin.Rome.UWP\\Plugin.Rome.UWP.csproj"
             },
-            "C:\\Projects\\MediaExperience\\Plugin.Rome\\Plugin.Rome.csproj": {
-              "projectPath": "C:\\Projects\\MediaExperience\\Plugin.Rome\\Plugin.Rome.csproj"
+            "C:\\Projects\\MediaExperience\\src\\Plugin.Rome\\Plugin.Rome.csproj": {
+              "projectPath": "C:\\Projects\\MediaExperience\\src\\Plugin.Rome\\Plugin.Rome.csproj"
             }
           }
         }

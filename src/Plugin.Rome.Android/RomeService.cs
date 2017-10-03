@@ -40,7 +40,7 @@ namespace Plugin.Rome.Android
 
             if (IsInitialized)
                 return;
-
+            
 			Platform.FetchAuthCode += Platform_FetchAuthCode;
 
 			await Platform.InitializeAsync(Context.ApplicationContext, appId);
@@ -50,7 +50,15 @@ namespace Plugin.Rome.Android
 
         private async void Platform_FetchAuthCode(string oauthUrl)
         {
-            await AuthenticateWithOAuth(oauthUrl);
+            try
+            {
+                await AuthenticateWithOAuth(oauthUrl);
+                Platform.FetchAuthCode -= Platform_FetchAuthCode;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
 
         private Task AuthenticateWithOAuth(string oauthUrl)
@@ -86,7 +94,7 @@ namespace Plugin.Rome.Android
       
         protected override void DiscoverDevices()
         {
-            if (_remoteSystems == null)
+            if (_remoteSystemWatcher != null)
                 return;
 
             //create watcher
@@ -141,43 +149,48 @@ namespace Plugin.Rome.Android
             return launchUriStatus == RemoteLaunchUriStatus.Success;
         }
 
-        public override Task<bool> SendCommandAsync(RomeRemoteSystem remoteSystem, string command)
+        public override async Task<bool> SendCommandAsync(RomeRemoteSystem remoteSystem, string command)
         {
-            return RemoteLaunchUri(remoteSystem, new Uri(command));
-            //if (_appServiceClientConnection == null)
-            //{
-            //    var system = (RemoteSystem)remoteSystem.NativeObject;
-            //    var connectionRequest = new RemoteSystemConnectionRequest(system);
+         //   return RemoteLaunchUri(remoteSystem, new Uri(command));
+            if (_appServiceClientConnection == null)
+            {
+                var system = (RemoteSystem)remoteSystem.NativeObject;
+                var connectionRequest = new RemoteSystemConnectionRequest(system);
 
-            //    // Construct an AppServiceClientConnection 
-            //    _appServiceClientConnection =
-            //        new AppServiceConnection(appServiceName, packageFamilyName, connectionRequest);
+                // Construct an AppServiceClientConnection 
+                _appServiceClientConnection =
+                    new AppServiceConnection(appServiceName, packageFamilyName, connectionRequest);
 
 
-            //    // open the connection (will throw a ConnectedDevicesException if there is an error)
-            //    try
-            //    {
-            //        AppServiceConnectionStatus status = await _appServiceClientConnection.OpenRemoteAsync();
-            //    }
-            //    catch (ConnectedDevicesException e)
-            //    {
-            //        _appServiceClientConnection = null;
-            //        return false;
-            //    }
-            //}
+                // open the connection (will throw a ConnectedDevicesException if there is an error)
+                try
+                {
+                    AppServiceConnectionStatus status = await _appServiceClientConnection.OpenRemoteAsync();
+                    if (status != AppServiceConnectionStatus.Success)
+                    {
+                        _appServiceClientConnection = null;
+                        return false;
+                    }
+                }
+                catch (ConnectedDevicesException e)
+                {
+                    _appServiceClientConnection = null;
+                    return false;
+                }
+            }
 
-            //var message = new Bundle();
-            //message.PutString("Command", command);
-            //try
-            //{
-            //    var response = await _appServiceClientConnection.SendMessageAsync(message);
-            //}
-            //catch (Exception e)
-            //{
-            //    return false;
-            //}
+            var message = new Bundle();
+            message.PutString("Command", command);
+            try
+            {
+                var response = await _appServiceClientConnection.SendMessageAsync(message);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
 
-            //return true;
+            return true;
 
         }
 

@@ -27,6 +27,8 @@ namespace MediaExperience.ViewModels
         private bool _isBusy;
         private TimeSpan _initialPosition;
         private TaskCompletionSource<bool> _tcs;
+        private ObservableCollection<RomeRemoteSystem> _devices = new ObservableCollection<RomeRemoteSystem>();
+        private int _videoId;
 
         public bool IsBusy
         {
@@ -88,9 +90,6 @@ namespace MediaExperience.ViewModels
             Duration = args.Duration.ToString("g");
             Progress = args.Progress;
         }
-
-        private ObservableCollection<RomeRemoteSystem> _devices;
-        private int _videoId;
 
         public ObservableCollection<RomeRemoteSystem> Devices
         { 
@@ -242,6 +241,7 @@ namespace MediaExperience.ViewModels
             }
 
             var uri = new Uri(sb.ToString());
+            //return _romeService.SendCommandAsync(device, uri.AbsolutePath);
             return _romeService.RemoteLaunchUri(device, uri);
         }
 
